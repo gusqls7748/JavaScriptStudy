@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+
+        var studendt = null;
+        var students = null;
+        function init(){
+            studendts = function(id, name){
+            this.id = id;
+            this.name = name;
+        }
+
+        studendts =[];
+        studendts[0] = new studendt("id1","hong1");
+        studendts[1] = new studendt("id2","hong2");
+
+        view_html();
+    }
+         
+        function add_student(){
+            var new_id = document.getElementById("id").value;
+            var new_name = document.getElementById("name").value;
+
+            var new_student = new student(new_id,new_name);
+            
+            studendts.push(new_student);
+
+            view_html();
+
+        }
+
+        function view_html(){
+            var strHTML = "";
+
+            for(var i=0;i<students.length;i++){
+            strHTML += "<tr>"
+            strHTML += "    <td widtj='400' align='center' height='40'>";
+            strHTML +=  studendts[i].id + " - " + studendts[i].name;
+            strHTML += "   </td>"
+            strHTML += "</tr>";
+            }
+
+            document.getElementById("listbody").innerHTML += strHTML;
+        }
+    </script>
+
+
+</head>
+<body onload="init()">
+    <table border="1" cellpadding="0" cellsapacing="0" width="400">
+        <tbody id="listbody">
+        <tr>
+            <td width="400" align="center" height="40">
+                <input type="text" id="id" />
+                <input type="text" id="name" />
+                <input type="button" value="추가" onclick="add_student()"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

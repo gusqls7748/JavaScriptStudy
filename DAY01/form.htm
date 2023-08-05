@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <title>Page Title</title>
+    <script>
+        //1. focus event : Tag(객체)에 cursor가 들어오면
+        //2. blur event : focus를 제거한다 - 
+        function a_focus(){
+            alert("focus event")
+
+            //blur : 강제로 커서를 뺴는 함수 -> 사실 필요없다
+            //document.getElementById("pass").blur();
+            document.getElementById("jumin1").focus();
+        }
+
+            function j_check(){
+                document.getElementById("show").innerHTML = document.getElementById("jumin1").value.length;
+                //alert(); 오류난거 알아보는거
+                //id jumin1 객체의 길이가 6이되면
+                if(document.getElementById("jumin1").value.length >= 6){
+                //cursor를 id jumin2로 옮기자
+                    document.getElementById("jumin2").focus();
+                }
+        }
+
+        function num_check(obj){
+            
+            
+            var permitVal = "0123456789";
+
+            var inputVal = obj.value; // "01a12ab1"
+            var perVal = "";
+            for(var i=0;i<inputVal.length;i++){
+
+                perVal = inputVal.substr(i,1);
+                
+                if(permitVal.indexOf(perVal) == -1){
+                    inputVal = inputVal.substr(0,i)
+                    
+                }
+
+            }
+            
+            document.getElementById("jumin2").value = inputVal;
+           
+        }
+
+
+        function checkbox_check(){
+            //chenckbox object들을 찾는다
+            var checkboxObjs = document.getElementsByName("hobby");
+
+            //alert(); 오류난거 알아보는거
+
+            //위에서 참조된 checkbox객체들의 checked 속성값을 검사하여 모두 false이면...
+            var isRst = true;
+            for(var i=0; i<checkboxObjs.length;i++){
+                if(checkboxObjs[i].checked == true){
+                    isRst = false;
+                }
+            }
+
+            if(isRst == true){
+                alert("하나라도 체크래하 이넘아!!!")
+            }
+        }
+
+        function gender_func(idx){
+
+            var objs = document.getElementsByName("gender");
+            //참조된 객체의 모든 checkbox를 모두 푼다.
+            for(var i=0;i<objs.length;i++){
+                obs[i].checked =false;
+            }
+            //선택된 checkbox만 선택표시된다.
+            objs[idx].checked = true;
+        }
+
+        function gender_func2(selectedObj){
+            var objs = document.getElementsByName("gender");
+            //참조된 객체의 모든 checkbox를 모두 푼다.
+            for(var i=0;i<objs.length;i++){
+                obs[i].checked =false;
+            }
+            // alert(selectedObj.value); 
+            //선택된 checkbox만 선택표시된다.
+            objs[selectedObj].checked = true;
+        }
+
+        //3. keypress : 
+        //4. keyup    :
+        //5. keydown  :
+    </script>
+</head>
+<body>
+    <!--javascript event,   form tag-->
+    <form action="" method="">
+        <div>
+            <input type="password" id="pass" name="pass" onfocus="a_focus()"/>
+            <div id="show"></div>
+        </div>
+        <div>
+            <input type="text" size="15" maxlength="10" name="jumin1" id="jumin1" onkeyup="j_check()"/><!--속성 값 기억하기 name= 서버에서 받아오는 값-->
+            -
+            <input type="text" size="15" maxlength="7" name="jumin2" id="jumin2"  onkeyup="num_check(this)"/>
+        </div>
+        <div>
+            <input type="checkbox" name="hobby" checked="" value="E"/> 운동<!--checked때문에 이미 체크 되어 있는 상태로 나타나기 떄문이다.-->
+            <input type="checkbox" name="hobby" value="M"/> 음악감상
+            <input type="checkbox" name="hobby" value="V"/> 영화
+        </div>
+        <div>
+            <label><input type="radio" name="gender" value="M" onclick="gender_func2(this)"/>남자</label> <!--checkbox에 label넣으면 그 중 하나를 골라야한다.-->
+            <label><input type="radio" name="gender" value="F" onclick="gender_func2(this)"/>여자</label>
+            <label><input type="radio" name="gender" value="F" onclick="gender_func2(this)"/>기타</label>
+        </div>
+        <div>   <!-- combobox -->
+            <select name="city">
+                <option value="">----선택----</option>
+                <option value="S">----서울----</option>
+                <option value="P">----부산----</option>
+                <option value="D">----경주----</option>
+            </select>
+        </div>
+        <div>
+            <textarea name="content" style="width:700px; height:200px; border: 1px solid blue; font-size: 30px; "></textarea>
+        </div>
+        <div>
+            <input type="button" value="확인" onclick="checkbox_check()"/>
+        </div>
+    </form>
+</body>
+</html>
