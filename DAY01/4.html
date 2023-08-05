@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <title>Page Title</title>
+    <script>
+        function aaa(){
+            // alert("안녕하세요")
+
+            // font 객체를 찾아서 그의 속성인 color 값을 red로 바꾼다.
+            window.document.getElementById("greeting").color = "red";
+        }
+    </script>
+</head>
+<body>
+    <font size="3" color="blue" id="greeting">DOM-Document of Model</font>
+        <input type="button" value="확인" onclick="aaa();"/> <!-- onclick="aaa();" 위에 script에 있는 함수를 버튼을 누르면 안녕하세요라는 값을 불러오는 것이다. -->
+        
+    <!--
+        javawcript event
+
+        click event -- 마우스 왼쪽 버튼 클릭
+    -->
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+<script>
+    function aaa(){
+        // font size 7까지 밖에 안됨
+        document.getElementById("a").innerHTML="<font size='7' color='red'/>a</font>";
+        document.getElementById("b").innerHTML="<font size='7' color='blue'/>b</font>";
+        document.getElementById("c").innerHTML="<font size='7' color='#78aa31'/>c</font>";
+    }
+
+    function bbb(){
+        // 자바스크립트는 이렇게 여러개일때 -> 배열타입으로 받아야한다. (태그네임으로 받아오잔아)
+        var spanTags = document.getElementsByTagName("span")
+        spanTags[0].innerHTML="<font size='7' color='red'/>z</font>";
+        spanTags[1].innerHTML="<font size='7' color='blue'/>x</font>";
+        spanTags[2].innerHTML="<font size='7' color='#78aa31'/>c</font>";
+    }
+
+    function ccc(){
+        // 자바스크립트는 거의 1차원 배열
+        // 자바스크립트는 배열을 정할때 개수 정할 필요없음 인터프리티언어라서 런타임때 컴파일 같이 해버림
+        
+        // 실제로는 밑에 values들은 외부데이터 -> 어떤 값이 들어와도 뿌려줄수 있는거지
+        var values= []; // new Array
+        values[0]="a";
+        values[1]="123456789";
+        values[0]="1.23456777";
+
+        var divTag = document.getElementById("list");
+        console.log(divTag);
+
+        var spanTags = document.getElementsByTagName("span");
+        console.log(spanTags);
+
+        // for(var i=0; i<spanTags.length;i++){
+        //     spanTags[i].innerHTML = "<span><font size='7' color='green'>"+ values[i] +"</span></font>";
+        // }
+
+        // 이렇게 짜는게 데이터가 아무리 많이 들어와도 효율좋음
+
+        var strHTML ="";
+
+        for(var i=0; i < spanTags.length; i++){
+            strHTML += "<span><font size='7' color='green'>"+ values[i] + "</span></font>";
+        }
+
+        divTag.innerHTML=strHTML;
+    }
+
+
+    function ddd(){ //name을 사용해서 참조하는 방법
+        // tags는 배열이겠지?
+        var tags= document.getElementsByName("a")
+        alert( typeof(tags));
+        
+}
+
+
+</script>
+
+
+</head>
+<body>
+    <div id="list">
+        <!--<div>
+            <div id="a">1</div> 
+            <span id="b">2</span> 
+            <span id="c">3</span> 
+        </div>-->
+        <div>
+            <span name="a">1</span>    <!--a-->
+            <span name="a">2</span>     <!--b-->
+            <span name="a">3</span>     <!--c-->
+        </div>
+        <div>
+            <input type="button" value="확인1" onclick="aaa();" />
+            <input type="button" value="확인2" onclick="ccc();" />
+        </div>
+    </div>
+
+    <!-- 이렇게 스판이 하나더 추가되면 3번 반복문인데 스판은 4개? -->
+    <!-- <span>이거는??</span> -->
+</body>
+
+</html>

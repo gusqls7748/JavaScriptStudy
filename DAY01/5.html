@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <title>Page Title</title>
+
+        <script>
+            function aaa(){     /*함수*/ //id를 사용해서 객체를 참조하는 방법
+                document.getElementById("a").innerHTML = "<font size='7' color='red' >a</font>";
+                document.getElementById("b").innerHTML = "<font size='7' color='yellow' >b</font>";
+                document.getElementById("c").innerHTML = "<font size='7' color='#74aa34' >c</font>";
+            }
+
+            function bbb(){     //tagName을 사용해서 참조하는 방법
+               var spamTags = document.getElementsByTagName("span");   /*배열 = spamTags*/
+               spamTags[0].innerHTML = "<font size='7' color='red' >a</font>";
+               spamTags[1].innerHTML = "<font size='7' color='yellow' >b</font>";
+               spamTags[2].innerHTML = "<font size='7' color='#74aa34' >c</font>";
+            }
+
+            function ccc(){     //tagName을 사용해서 참조하는 방법
+                var values = [];    //new Array();
+                values[0] = "a";
+                values[1] = 1324567;
+                values[2] = 1.49567867;
+
+                var divTag = document.getElementById("list");
+
+
+                var spanTags = document.getElementsByTagName("span");
+
+                var strHTML = ""
+                for(var i=0; i<spanTags.length;i++){
+                    spamTags += "<span><font size='7' color='red' >" + values[i] + "</span></font>";
+                }
+
+                divTag.innerHTML = strHTML;
+            }
+
+            function ddd(){ // name을 사용해서 참조하는 방법
+                var tags = document.getElementsByName("a");
+
+            }
+
+        </script>
+</head>
+<body>
+    <div>
+        <div id="list">
+            <span name="a">1</span>  <!--a-->
+            <span name="a">2</span>  <!--b-->
+            <span name="a">3</span>  <!--c-->
+        </div>
+        <div>
+            <input type="button" value="확인" onclick="bbb();"/>
+        </div>
+        <span>여기다 </span>
+    </div>
+</body>
+</html>
